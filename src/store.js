@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import shoppingReducer from './features/shoppingSlice';
-import { thunk } from 'redux-thunk'; // Named export from redux-thunk
+import authReducer from './Redux/authSlice'; // Ensure the path is correct
 
 export const store = configureStore({
   reducer: {
     shopping: shoppingReducer,
+    auth: authReducer, // Add auth reducer here
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+  // No need to manually add thunk, it's included by default
 });
+

@@ -1,53 +1,42 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "username": "nasiphi",
-        "email": "nasiphi@example.com",
-        "password": "password123" 
-      },
-      {
-        "id": 2,
-        "username": "zama",
-        "email": "zama@example.com",
-        "password": "password456" 
-      },
-      {
-        "id": 3,
-        "username": "liltha",
-        "email": "liltha@example.com",
-        "password": "password789" 
-      }
-    ],
-    "shoppingList": [
-      {
-        "id": 1,
-        "userId": 1,
-        "item": "Banana",
-        "price": 2,
-        "kg": 1
-      },
-      {
-        "id": 2,
-        "userId": 1,
-        "item": "Apple",
-        "price": 2.5,
-        "kg": 2
-      },
-      {
-        "id": 3,
-        "userId": 2,
-        "item": "Carrot",
-        "price": 1,
-        "kg": 3
-      },
-      {
-        "id": 4,
-        "userId": 3,
-        "item": "Onion",
-        "price": 1.5,
-        "kg": 5
-      }
-    ]
-  }
-  
+  "users": [
+    {
+      "id": "1",
+      "username": "nasiphi",
+      "email": "nasiphi@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "username": "zama",
+      "email": "zama@example.com",
+      "password": "password456"
+    },
+    {
+      "id": "3",
+      "username": "liltha",
+      "email": "liltha@example.com",
+      "password": "password789"
+    },
+    {
+      "id": "4ece",
+      "username": "",
+      "email": "siphesihlemzamane@gmail.com",
+      "password": "nacciphi"
+    }
+  ],
+  "shoppingList": [
+    {
+      "id": "c348",
+      "item": "Pap",
+      "price": -4,
+      "kg": -4
+    },
+    {
+      "id": "9731",
+      "item": "pa",
+      "price": -5,
+      "kg": -5
+    }
+  ]
+}

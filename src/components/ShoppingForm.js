@@ -1,4 +1,4 @@
-// ShoppingForm.js
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemToDb } from '../features/shoppingSlice';

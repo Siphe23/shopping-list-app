@@ -1,20 +1,39 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from './store';
-
+import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AuthPage from './components/AuthPage';
 import ShoppingList from './components/ShoppingList';
 import ShoppingForm from './components/ShoppingForm';
+import './App.css';
 
 function App() {
+  const user = useSelector((state) => state.auth.user); 
+
   return (
-    <Provider store={store}>
+    <Router>
       <div className="App">
-        <h1>Shopping List</h1>
-        <ShoppingForm />
-        <ShoppingList />
+        <Routes>
+          <Route
+            path="/"
+            element={user ? <Navigate to="/shopping" /> : <AuthPage />}
+          />
+          <Route
+            path="/shopping"
+            element={user ? (
+              <>
+                <h1>Shopping List</h1>
+                <ShoppingForm />
+                <ShoppingList />
+              </>
+            ) : (
+              <Navigate to="/" />
+            )}
+          />
+        </Routes>
       </div>
-    </Provider>
+    </Router>
   );
 }
 
 export default App;
+

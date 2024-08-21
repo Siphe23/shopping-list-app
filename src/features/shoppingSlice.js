@@ -1,24 +1,32 @@
-// shoppingSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Define async thunk to fetch shopping list
+const baseURL = 'http://localhost:3001';
+
+
 export const fetchShoppingList = createAsyncThunk('shopping/fetchShoppingList', async () => {
-  const response = await axios.get('/shoppingList');
+  const response = await axios.get(`${baseURL}/shoppingList`);
   return response.data;
 });
 
-// Define async thunk to delete item
+
 export const deleteItemFromDb = createAsyncThunk('shopping/deleteItemFromDb', async (id) => {
-  await axios.delete(`/shoppingList/${id}`);
+  await axios.delete(`${baseURL}/shoppingList/${id}`);
   return id;
 });
 
-// Define async thunk to add item
+
 export const addItemToDb = createAsyncThunk('shopping/addItemToDb', async (newItem) => {
-  const response = await axios.post('/shoppingList', newItem);
+  const response = await axios.post(`${baseURL}/shoppingList`, newItem);
   return response.data;
 });
+
+
+export const editItemToDb = createAsyncThunk('shopping/editItemToDb', async ({ id, updatedItem }) => {
+  const response = await axios.put(`${baseURL}/shoppingList/${id}`, updatedItem);
+  return response.data;
+});
+
 
 const shoppingSlice = createSlice({
   name: 'shopping',
@@ -40,6 +48,7 @@ const shoppingSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+     
       .addCase(fetchShoppingList.pending, (state) => {
         state.status = 'loading';
         state.isLoading = true;
@@ -54,6 +63,8 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
+      
+      
       .addCase(deleteItemFromDb.pending, (state) => {
         state.status = 'loading';
         state.isLoading = true;
@@ -68,6 +79,8 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
+      
+
       .addCase(addItemToDb.pending, (state) => {
         state.status = 'loading';
         state.isLoading = true;
@@ -81,9 +94,30 @@ const shoppingSlice = createSlice({
         state.status = 'failed';
         state.isLoading = false;
         state.error = action.error.message;
+      })
+
+    
+      .addCase(editItemToDb.pending, (state) => {
+        state.status = 'loading';
+        state.isLoading = true;
+      })
+      .addCase(editItemToDb.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.isLoading = false;
+       
+        const index = state.shoppingList.findIndex(item => item.id === action.payload.id);
+        if (index !== -1) {
+          state.shoppingList[index] = action.payload;
+        }
+      })
+      .addCase(editItemToDb.rejected, (state, action) => {
+        state.status = 'failed';
+        state.isLoading = false;
+        state.error = action.error.message;
       });
   },
 });
+
 
 export const { setEditIndex, editItem } = shoppingSlice.actions;
 export default shoppingSlice.reducer;
