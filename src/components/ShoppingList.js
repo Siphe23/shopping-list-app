@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchShoppingList, deleteItemFromDb, setEditIndex } from '../features/shoppingSlice';
-import logo from '../logo.png'; // Adjust the path to your logo file
+
 import EditItemForm from '../Redux/EditItemForm'; 
 
 const formatCurrency = (amount) => {
@@ -36,7 +36,7 @@ const ShoppingList = () => {
 
   return (
     <div className="shopping-list">
-      <img src={logo} alt="Logo" className="App-logo" /> {/* Add logo at the top */}
+      
       {status === 'loading' && <div className="loading">Loading...</div>}
       {status === 'failed' && <div className="error">{error}</div>}
       {status === 'succeeded' && shoppingList.length === 0 && (
