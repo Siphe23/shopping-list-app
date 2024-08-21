@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AuthPage from './components/AuthPage';
 import ShoppingList from './components/ShoppingList';
 import ShoppingForm from './components/ShoppingForm';
+
 import './App.css';
 
 function App() {
-  const user = useSelector((state) => state.auth.user); 
+  const user = useSelector((state) => state.auth.user);
 
   return (
     <Router>
@@ -15,19 +16,27 @@ function App() {
         <Routes>
           <Route
             path="/"
+            element={user ? <Navigate to="/shopping" /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
             element={user ? <Navigate to="/shopping" /> : <AuthPage />}
           />
           <Route
             path="/shopping"
             element={user ? (
-              <>
+              <div>
                 <h1>Shopping List</h1>
                 <ShoppingForm />
                 <ShoppingList />
-              </>
+              </div>
             ) : (
-              <Navigate to="/" />
+              <Navigate to="/login" />
             )}
+          />
+          <Route
+            path="*"
+            element={<Navigate to="/login" />}
           />
         </Routes>
       </div>
@@ -36,4 +45,3 @@ function App() {
 }
 
 export default App;
-

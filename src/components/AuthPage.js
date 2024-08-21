@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, signupUser } from '../Redux/authSlice'; 
+import { useNavigate } from 'react-router-dom';
+import { unwrapResult } from '@reduxjs/toolkit'; // Import unwrapResult
 import './AuthPage.css'; 
 
 function AuthPage() {
@@ -10,14 +12,31 @@ function AuthPage() {
   const [isSignup, setIsSignup] = useState(false);
 
   const dispatch = useDispatch();
-  const { user, status, error } = useSelector((state) => state.auth);
+  const navigate = useNavigate(); 
+  const { status, error } = useSelector((state) => state.auth);
 
-  const handleLogin = () => {
-    dispatch(loginUser({ email, password }));
+  const handleLogin = async () => {
+    try {
+      const action = await dispatch(loginUser({ email, password }));
+      const result = unwrapResult(action);
+      if (result) {
+        navigate('/shopping'); // Redirect to shopping page
+      }
+    } catch (err) {
+      console.error('Login failed:', err);
+    }
   };
 
-  const handleSignup = () => {
-    dispatch(signupUser({ username, email, password }));
+  const handleSignup = async () => {
+    try {
+      const action = await dispatch(signupUser({ username, email, password }));
+      const result = unwrapResult(action);
+      if (result) {
+        navigate('/login'); // Redirect to login page after signup
+      }
+    } catch (err) {
+      console.error('Signup failed:', err);
+    }
   };
 
   return (
@@ -50,7 +69,7 @@ function AuthPage() {
         {error && <p className="error">{error}</p>}
         <div className="signupContainer">
           <p>Don't have an account?</p>
-          <a href="#" onClick={() => setIsSignup(true)}>Sign up here</a>
+          <button className="linkButton" onClick={() => setIsSignup(true)}>Sign up here</button>
         </div>
       </div>
 
@@ -90,7 +109,7 @@ function AuthPage() {
         {error && <p className="error">{error}</p>}
         <div className="signupContainer">
           <p>Already have an account?</p>
-          <a href="#" onClick={() => setIsSignup(false)}>Login here</a>
+          <button className="linkButton" onClick={() => setIsSignup(false)}>Login here</button>
         </div>
       </div>
     </div>
@@ -98,4 +117,3 @@ function AuthPage() {
 }
 
 export default AuthPage;
-

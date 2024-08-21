@@ -23,20 +23,62 @@
       "username": "",
       "email": "siphesihlemzamane@gmail.com",
       "password": "nacciphi"
+    },
+    {
+      "id": "0668",
+      "username": "",
+      "email": "nacciphi@gmail.com",
+      "password": "nacciphi"
+    },
+    {
+      "id": "3f81",
+      "username": "nacciphi",
+      "email": "buhle@nasiphi",
+      "password": "2323"
+    },
+    {
+      "id": "3024",
+      "username": "SIPHE",
+      "email": "sIPHE@23",
+      "password": "nacciphi"
+    },
+    {
+      "id": "a4ea",
+      "username": "Qama",
+      "email": "Qama@23",
+      "password": "d3434"
+    },
+    {
+      "id": "52b4",
+      "username": "ZAra",
+      "email": "ZAra@56",
+      "password": "zara3456"
+    },
+    {
+      "id": "47a2",
+      "username": "SA",
+      "email": "sssa@344",
+      "password": "6767"
+    },
+    {
+      "id": "6bb8",
+      "username": "DED",
+      "email": "DE@78",
+      "password": "9090"
     }
   ],
   "shoppingList": [
     {
-      "id": "c348",
-      "item": "Pap",
-      "price": -4,
-      "kg": -4
+      "item": "Tomatoes",
+      "price": 3,
+      "kg": 2,
+      "id": "a123"
     },
     {
-      "id": "9731",
-      "item": "pa",
-      "price": -5,
-      "kg": -5
+      "id": "757b",
+      "item": "tomata",
+      "price": -1,
+      "kg": -3
     }
   ]
 }

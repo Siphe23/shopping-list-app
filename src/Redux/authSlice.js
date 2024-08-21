@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001';
-
+const baseURL = 'http://localhost:3000';
 
 export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, password }, thunkAPI) => {
   try {
@@ -16,7 +15,6 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, pass
     return thunkAPI.rejectWithValue('Login failed');
   }
 });
-
 
 export const signupUser = createAsyncThunk('auth/signupUser', async ({ username, email, password }, thunkAPI) => {
   try {
@@ -32,7 +30,6 @@ export const signupUser = createAsyncThunk('auth/signupUser', async ({ username,
   }
 });
 
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -47,7 +44,6 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-     
       .addCase(loginUser.pending, (state) => {
         state.status = 'loading';
       })
@@ -60,8 +56,6 @@ const authSlice = createSlice({
         state.status = 'failed';
         state.error = action.payload;
       })
-
-      
       .addCase(signupUser.pending, (state) => {
         state.status = 'loading';
       })
