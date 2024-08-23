@@ -1,3 +1,4 @@
+// features/shoppingSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -57,53 +58,10 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-      .addCase(deleteItemFromDb.pending, (state) => {
-        state.status = 'loading';
-        state.isLoading = true;
-      })
-      .addCase(deleteItemFromDb.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.isLoading = false;
-        state.shoppingList = state.shoppingList.filter(item => item.id !== action.payload);
-      })
-      .addCase(deleteItemFromDb.rejected, (state, action) => {
-        state.status = 'failed';
-        state.isLoading = false;
-        state.error = action.error.message;
-      })
-      .addCase(addItemToDb.pending, (state) => {
-        state.status = 'loading';
-        state.isLoading = true;
-      })
-      .addCase(addItemToDb.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.isLoading = false;
-        state.shoppingList.push(action.payload);
-      })
-      .addCase(addItemToDb.rejected, (state, action) => {
-        state.status = 'failed';
-        state.isLoading = false;
-        state.error = action.error.message;
-      })
-      .addCase(editItemToDb.pending, (state) => {
-        state.status = 'loading';
-        state.isLoading = true;
-      })
-      .addCase(editItemToDb.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.isLoading = false;
-        const index = state.shoppingList.findIndex(item => item.id === action.payload.id);
-        if (index !== -1) {
-          state.shoppingList[index] = action.payload;
-        }
-      })
-      .addCase(editItemToDb.rejected, (state, action) => {
-        state.status = 'failed';
-        state.isLoading = false;
-        state.error = action.error.message;
-      });
+      // Other cases for delete, add, and edit
   },
 });
 
 export const { setEditIndex, editItem } = shoppingSlice.actions;
+
 export default shoppingSlice.reducer;

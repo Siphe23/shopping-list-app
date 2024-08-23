@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemToDb } from '../features/shoppingSlice';
@@ -6,16 +5,16 @@ import { addItemToDb } from '../features/shoppingSlice';
 const ShoppingForm = () => {
   const [item, setItem] = useState('');
   const [price, setPrice] = useState('');
-  const [kg, setKg] = useState('');
+  const [quantity, setQuantity] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (item && price && kg) {
-      dispatch(addItemToDb({ item, price: parseFloat(price), kg: parseFloat(kg) }));
+    if (item && price && quantity) {
+      dispatch(addItemToDb({ item, price: parseFloat(price), quantity: parseFloat(quantity) }));
       setItem('');
       setPrice('');
-      setKg('');
+      setQuantity('');
     }
   };
 
@@ -35,9 +34,9 @@ const ShoppingForm = () => {
       />
       <input
         type="number"
-        value={kg}
-        onChange={(e) => setKg(e.target.value)}
-        placeholder="Kg"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+        placeholder="Quantity"
       />
       <button type="submit">Add Item</button>
     </form>
