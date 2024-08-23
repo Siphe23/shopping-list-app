@@ -40,7 +40,7 @@ const ShoppingList = () => {
           <button onClick={() => handleDelete(item.id)}>Delete</button>
         </div>
       ))}
-      {editIndex !== null && <EditItemForm />} {/* Render the edit form if an item is being edited */}
+      {editIndex !== null && <EditItemForm />} 
     </div>
   );
 };

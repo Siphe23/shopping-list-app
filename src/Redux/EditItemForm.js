@@ -30,7 +30,7 @@ const EditItemForm = () => {
         kg: parseFloat(kg),
       };
       dispatch(editItemToDb({ id: shoppingList[editIndex].id, updatedItem }));
-      dispatch(setEditIndex(null)); // Clear edit index after updating
+      dispatch(setEditIndex(null)); 
     }
   };
 

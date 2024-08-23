@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, signupUser } from '../Redux/authSlice'; 
 import { useNavigate } from 'react-router-dom';
-import { unwrapResult } from '@reduxjs/toolkit'; // Import unwrapResult
+import { unwrapResult } from '@reduxjs/toolkit'; 
 import './AuthPage.css'; 
 
 function AuthPage() {
@@ -20,7 +20,7 @@ function AuthPage() {
       const action = await dispatch(loginUser({ email, password }));
       const result = unwrapResult(action);
       if (result) {
-        navigate('/shopping'); // Redirect to shopping page
+        navigate('/shopping'); 
       }
     } catch (err) {
       console.error('Login failed:', err);
@@ -32,7 +32,7 @@ function AuthPage() {
       const action = await dispatch(signupUser({ username, email, password }));
       const result = unwrapResult(action);
       if (result) {
-        navigate('/login'); // Redirect to login page after signup
+        navigate('/login'); 
       }
     } catch (err) {
       console.error('Signup failed:', err);

@@ -1,4 +1,4 @@
-// features/shoppingSlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -58,7 +58,7 @@ const shoppingSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-      // Other cases for delete, add, and edit
+      
   },
 });
 

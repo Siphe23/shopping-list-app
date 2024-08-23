@@ -3,11 +3,11 @@
     max-width: 400px;
     margin: 20px auto;
     border: 1px solid #ddd;
-    border-radius: 8px; /* Match with container radius */
-    background-color: #2E2F3E; /* Match with container background */
-    color: #fff; /* Match text color */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Match with container shadow */
-    font-family: 'Geologica', sans-serif; /* Match font family */
+    border-radius: 8px; 
+    background-color: #2E2F3E; 
+    color: #fff; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    font-family: 'Geologica', sans-serif; 
   }
   
   .edit-item-form h2 {
@@ -29,18 +29,18 @@
   .edit-item-form input {
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px; /* Match button radius */
+    border-radius: 4px; 
     margin-top: 5px;
     width: 100%;
     font-size: 16px;
-    background-color: #fff; /* Input background */
-    color: #333; /* Input text color */
+    background-color: #fff; 
+    color: #333; 
   }
   
   .edit-item-form button {
     padding: 12px;
     border: none;
-    border-radius: 4px; /* Match button radius */
+    border-radius: 4px; 
     cursor: pointer;
     margin-top: 10px;
     font-size: 18px;
@@ -48,20 +48,20 @@
   }
   
   .edit-item-form button[type="submit"] {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     color: white;
   }
   
   .edit-item-form button[type="submit"]:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; 
   }
   
   .edit-item-form button[type="button"] {
-    background-color: #f44336; /* Red */
+    background-color: #f44336;
     color: white;
   }
   
   .edit-item-form button[type="button"]:hover {
-    background-color: #e04141; /* Darker red on hover */
+    background-color: #e04141;
   }
   
