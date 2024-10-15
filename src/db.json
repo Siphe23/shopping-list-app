@@ -76,6 +76,7 @@
   "shoppingList": [
     {
       "id": 1,
+<<<<<<< HEAD
       "item": "Bananas",
       "price": 2.99,
       "kg": 1
@@ -91,6 +92,33 @@
       "item": "Bread",
       "price": 1.00,
       "kg": 1
+=======
+      "userId": "1",
+      "item": "Apples",
+      "kg": 2,
+      "price": 10
+    },
+    {
+      "id": 2,
+      "userId": "2",
+      "item": "Oranges",
+      "kg": 3,
+      "price": 15
+    },
+    {
+      "id": 3,
+      "userId": "1",
+      "item": "Bananas",
+      "kg": 1,
+      "price": 7
+    },
+    {
+      "id": 4,
+      "userId": "3",
+      "item": "Grapes",
+      "kg": 2,
+      "price": 20
+>>>>>>> 754f0b21be206ec11985b65a6a13897a2801762b
     }
   ]
 }

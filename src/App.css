@@ -150,8 +150,8 @@ form button:hover {
   margin-top: 20px;
 }
 .App-logo {
-  height: 50px; /* Adjust size as needed */
-  border-radius: 50%; /* Circular shape */
+  height: 50px; 
+  border-radius: 50%; 
   margin: 10px auto; 
   display: block;
   animation: App-logo-spin infinite 20s linear;

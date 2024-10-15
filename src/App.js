@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AuthPage from './components/AuthPage';
 import ShoppingList from './components/ShoppingList';
 import ShoppingForm from './components/ShoppingForm';
-import logo from './assets/logo.png';  // Relative path based on the file's location
+import logo from './assets/logo.png';  
 
 
 
@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Add the image here */}
+       
         <img src={logo} alt="Logo" className="App-logo" />
 
         <Routes>

@@ -20,7 +20,11 @@ function AuthPage() {
       const action = await dispatch(loginUser({ email, password }));
       const result = unwrapResult(action);
       if (result) {
+<<<<<<< HEAD
         navigate('/shopping');
+=======
+        navigate('/shopping'); 
+>>>>>>> 754f0b21be206ec11985b65a6a13897a2801762b
       }
     } catch (err) {
       console.error('Login failed:', err);
@@ -32,7 +36,11 @@ function AuthPage() {
       const action = await dispatch(signupUser({ username, email, password }));
       const result = unwrapResult(action);
       if (result) {
+<<<<<<< HEAD
         navigate('/login');
+=======
+        navigate('/login'); 
+>>>>>>> 754f0b21be206ec11985b65a6a13897a2801762b
       }
     } catch (err) {
       console.error('Signup failed:', err);
