@@ -1,13 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3000';
+const baseURL = 'http://localhost:3001/users';
 
 export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, password }, thunkAPI) => {
   try {
-    const response = await axios.get(`${baseURL}/users?email=${email}&password=${password}`);
-    if (response.data.length > 0) {
-      return response.data[0]; 
+    // Fetch by email only, as JSON Server doesn't support filtering multiple fields
+    const response = await axios.get(`${baseURL}?email=${email}`);
+    
+    // Check if the user exists and the password matches
+    const user = response.data.find(user => user.password === password);
+    if (user) {
+      return user; 
     } else {
       return thunkAPI.rejectWithValue('Invalid email or password');
     }
@@ -18,12 +22,12 @@ export const loginUser = createAsyncThunk('auth/loginUser', async ({ email, pass
 
 export const signupUser = createAsyncThunk('auth/signupUser', async ({ username, email, password }, thunkAPI) => {
   try {
-    const userExists = await axios.get(`${baseURL}/users?email=${email}`);
+    const userExists = await axios.get(`${baseURL}?email=${email}`);
     if (userExists.data.length > 0) {
       return thunkAPI.rejectWithValue('User already exists');
     }
 
-    const response = await axios.post(`${baseURL}/users`, { username, email, password });
+    const response = await axios.post(baseURL, { username, email, password });
     return response.data; 
   } catch (error) {
     return thunkAPI.rejectWithValue('Signup failed');

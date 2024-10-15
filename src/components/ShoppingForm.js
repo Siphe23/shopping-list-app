@@ -11,13 +11,24 @@ const ShoppingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (item && price && kg) {
-      dispatch(addItemToDb({ item, price: parseFloat(price), kg: parseFloat(kg) }));
-      setItem('');
-      setPrice('');
-      setKg('');
+  
+    if (!item || !price || !kg) {
+      alert("Please fill in all fields.");
+      return;
     }
+  
+    if (parseFloat(price) <= 0 || parseFloat(kg) <= 0) {
+      alert("Price and weight must be positive numbers.");
+      return;
+    }
+  
+    dispatch(addItemToDb({ item, price: parseFloat(price), kg: parseFloat(kg) }));
+    setItem('');
+    setPrice('');
+    setKg('');
   };
+  
+  
 
   return (
     <form onSubmit={handleSubmit}>

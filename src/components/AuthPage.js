@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, signupUser } from '../Redux/authSlice'; 
+import { loginUser, signupUser } from '../features/authSlice'; 
 import { useNavigate } from 'react-router-dom';
-import { unwrapResult } from '@reduxjs/toolkit'; // Import unwrapResult
+import { unwrapResult } from '@reduxjs/toolkit'; 
 import './AuthPage.css'; 
 
 function AuthPage() {
@@ -20,23 +20,30 @@ function AuthPage() {
       const action = await dispatch(loginUser({ email, password }));
       const result = unwrapResult(action);
       if (result) {
-        navigate('/shopping'); // Redirect to shopping page
+        navigate('/shopping');
       }
     } catch (err) {
       console.error('Login failed:', err);
     }
   };
-
+  
   const handleSignup = async () => {
     try {
       const action = await dispatch(signupUser({ username, email, password }));
       const result = unwrapResult(action);
       if (result) {
-        navigate('/login'); // Redirect to login page after signup
+        navigate('/login');
       }
     } catch (err) {
       console.error('Signup failed:', err);
     }
+  };
+  
+  const toggleForm = () => {
+    setIsSignup(!isSignup);
+    setEmail('');
+    setPassword('');
+    setUsername(''); // Only relevant for signup
   };
 
   return (
@@ -69,7 +76,7 @@ function AuthPage() {
         {error && <p className="error">{error}</p>}
         <div className="signupContainer">
           <p>Don't have an account?</p>
-          <button className="linkButton" onClick={() => setIsSignup(true)}>Sign up here</button>
+          <button className="linkButton" onClick={toggleForm}>Sign up here</button>
         </div>
       </div>
 
@@ -109,7 +116,7 @@ function AuthPage() {
         {error && <p className="error">{error}</p>}
         <div className="signupContainer">
           <p>Already have an account?</p>
-          <button className="linkButton" onClick={() => setIsSignup(false)}>Login here</button>
+          <button className="linkButton" onClick={toggleForm}>Login here</button>
         </div>
       </div>
     </div>

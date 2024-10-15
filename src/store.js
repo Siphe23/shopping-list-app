@@ -1,12 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './features/authSlice';
 import shoppingReducer from './features/shoppingSlice';
-import authReducer from './Redux/authSlice'; // Ensure the path is correct
 
-export const store = configureStore({
+// Configure the store
+const store = configureStore({
   reducer: {
+    auth: authReducer,
     shopping: shoppingReducer,
-    auth: authReducer, // Add auth reducer here
   },
-  // No need to manually add thunk, it's included by default
+
 });
+
+export default store;
 
